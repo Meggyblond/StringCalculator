@@ -43,3 +43,12 @@ it("should throw exception Negatives not allowed: -1,-2,", () => {
 it("should throw exception Negatives not allowed: -9, -2, -8, -10, -1", () => {
     expect(() => {add("1,5,9,-9,400,-2,-8,-10,200,-1,12,11")}).toThrowError("Negatives not allowed: -9,-2,-8,-10,-1");
 });
+
+it("should ignore numbers bigger than 1000", () => {
+    expect(add("1001")).toBe(0);
+});
+
+it("Making sure that to combined numbers can be over 1000", () => {
+    expect(add("501,500")).toBe(1001);
+});
+

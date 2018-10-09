@@ -1,5 +1,5 @@
 function add (numbers) {
-    if(numbers == "") {
+    if(numbers == "" || parseInt(numbers) > 1000) {
 	return 0;
     }    
 
@@ -10,7 +10,7 @@ function add (numbers) {
 	if(parseInt(numbers) < 0) {
 	    catchNegatives(numbers);
 	}
-	return parseInt(numbers);
+	return parseInt(numbers);    
     }
 }
 
