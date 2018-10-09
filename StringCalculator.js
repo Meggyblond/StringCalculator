@@ -8,7 +8,7 @@ function add (numbers) {
 	return sum(array);
     }else {
 	if(parseInt(numbers) < 0) {
-	    throw new Error("Negatives not allowed: " + numbers);
+	    catchNegatives(numbers);
 	}
 	return parseInt(numbers);
     }
@@ -27,13 +27,18 @@ function sum (array) {
 
 function catchNegatives(array) {
     var message = "Negatives not allowed: "
+    
+    if(!Array.isArray(array)) {
+	message += array;
+    }else {
     for(var i = 0; i < array.length; i++) {
         if(array[i] < 0) {
             message += array[i] + ",";
         }
     }
-    var newMsg = message.substring(0, message.length-1);
-    throw new Error(newMsg);
+    message = message.substring(0, message.length-1);
+    }
+    throw new Error(message);
 }
 
 module.exports = add;
