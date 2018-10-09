@@ -1,5 +1,5 @@
 function add (numbers) {
-    if(numbers == "" || parseInt(numbers) > 1000) {
+    if(numbers == "") {
 	return 0;
     }    
 
@@ -10,7 +10,7 @@ function add (numbers) {
 	if(parseInt(numbers) < 0) {
 	    catchNegatives(numbers);
 	}
-	return parseInt(numbers);    
+	return parseInt(numbers) > 1000 ? 0 : parseInt(numbers);    
     }
 }
 
@@ -19,8 +19,11 @@ function sum (array) {
     for(var i = 0; i < array.length; i++) {
 	if(parseInt(array[i]) < 0) {
 	    catchNegatives(array);
+	}else if(parseInt(array[i]) > 1000) {
+	    
+	}else {
+            sum += parseInt(array[i]);	
 	}
-	sum += parseInt(array[i]);
     }
     return sum;
 }

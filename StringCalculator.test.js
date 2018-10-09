@@ -48,7 +48,14 @@ it("should ignore numbers bigger than 1000", () => {
     expect(add("1001")).toBe(0);
 });
 
-it("Making sure that to combined numbers can be over 1000", () => {
+it("should let combined numbers be over 1000", () => {
     expect(add("501,500")).toBe(1001);
 });
 
+it("should ignore numbers bigger than 1000", () => {
+    expect(add("10001,2")).toBe(2);
+});
+
+it("should ignore numbers bigger than 1000", () => {
+    expect(add("10001,2,2000,5,3000,3000,3000,3000,3000,3000,3")).toBe(10);
+});
