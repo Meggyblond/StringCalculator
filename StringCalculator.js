@@ -25,4 +25,15 @@ function sum (array) {
     return sum;
 }
 
+function catchNegatives(array) {
+    var message = "Negatives not allowed: "
+    for(var i = 0; i < array.length; i++) {
+        if(array[i] < 0) {
+            message += array[i] + ",";
+        }
+    }
+    var newMsg = message.substring(0, message.length-1);
+    throw new Error(newMsg);
+}
+
 module.exports = add;

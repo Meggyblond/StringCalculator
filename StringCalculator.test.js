@@ -36,3 +36,10 @@ it("should throw exception Negatives not allowed: -3,", () => {
     expect(() => {add("-3")}).toThrowError("Negatives not allowed: -3");
 });
 
+it("should throw exception Negatives not allowed: -1,-2,", () => {
+    expect(() => {add("-1,-2")}).toThrowError("Negatives not allowed: -1,-2");
+});
+
+it("should throw exception Negatives not allowed: -9, -2, -8, -10, -1", () => {
+    expect(() => {add("1,5,9,-9,400,-2,-8,-10,200,-1,12,11")}).toThrowError("Negatives not allowed: -9,-2,-8,-10,-1");
+});
