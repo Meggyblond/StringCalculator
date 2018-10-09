@@ -3,12 +3,19 @@ function add (numbers) {
 	return 0;
     }    
 
-    var array = numbers.split(",");
+    if(numbers.includes(",")) {
+	var array = numbers.split(",");
+	return sum(array);
+    }else {
+	return parseInt(numbers);
+    }
+}
+
+function sum (array) {
     var sum = 0;
     for(var i = 0; i < array.length; i++) {
 	sum += parseInt(array[i]);
-     }
-     return sum;
+    }
+    return sum;
 }
-
 module.exports = add;
