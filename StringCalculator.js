@@ -3,8 +3,8 @@ function add (numbers) {
 	return 0;
     }    
 
-    if(numbers.includes(",")) {
-	var array = numbers.split(",");
+    if(numbers.includes(",") || numbers.includes("\n")) {
+	var array = numbers.split(/,|\n/);
 	return sum(array);
     }else {
 	return parseInt(numbers);

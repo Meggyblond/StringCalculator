@@ -23,3 +23,11 @@ it("should return the sum of multiple numbers", () => {
 it("should return the sum of multiple numbers", () => {
     expect(add("0,1,2,3,4,5,6,7,8,9,10")).toBe(55);
 });
+
+it("should return the sum of multiple numbers with , and new line separator", () => {
+    expect(add("1\n2\n3")).toBe(6);
+});
+
+it("should return the sum of multiple numbers with , and new line separator", () => {
+    expect(add("0,1\n2\n3,4")).toBe(10);
+});
