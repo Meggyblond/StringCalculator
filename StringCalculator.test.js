@@ -31,3 +31,8 @@ it("should return the sum of multiple numbers with , and new line separator", ()
 it("should return the sum of multiple numbers with , and new line separator", () => {
     expect(add("0,1\n2\n3,4")).toBe(10);
 });
+
+it("should throw exception Negatives not allowed: -3,", () => {
+    expect(() => {add("-3")}).toThrowError("Negatives not allowed: -3");
+});
+
