@@ -59,3 +59,7 @@ it("should ignore numbers bigger than 1000", () => {
 it("should ignore numbers bigger than 1000", () => {
     expect(add("10001,2,2000,5,3000,3000,3000,3000,3000,3000,3")).toBe(10);
 });
+
+it("should handle the ; delimiter", () => {
+    expect(add("//;\n1;2")).toBe(3);
+});
