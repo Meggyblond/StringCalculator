@@ -2,13 +2,22 @@ function add (numbers) {
     if(numbers == "") {
 	return 0;
     }    
-    
+    var del = [",", "\n"];
     if(numbers.includes("//")){
-	return catchRegex(numbers);
+	del.push(catchRegex(numbers));
+	numbers = numbers.substring(4, numbers.length);
     }
 
-    if(numbers.includes(",") || numbers.includes("\n")) {
-	var array = numbers.split(/,|\n/);
+    if(numbers.includes(del[0]) || numbers.includes(del[1]) || numbers.includes(del[2])) {
+	var string = "";
+	for(var i = 0; i < del.length; i++) {
+	    string += del[i] + "|";
+	}
+	string = string.substring(0, string.length-1);
+	var reg = new RegExp(string);
+ 	console.log(numbers);
+        var array = numbers.split(reg);
+	console.log(array);
 	return sum(array);
     }else {
 	if(parseInt(numbers) < 0) {
@@ -51,9 +60,7 @@ function catchNegatives(array) {
 function catchRegex(numbers) {
     var counter = 0;
     var del = numbers[2];
-    numbers = numbers.substring(4, numbers.length);
-    var array = numbers.split(del);
-    return sum(array);
+    return del;
 }
 
 module.exports = add;
