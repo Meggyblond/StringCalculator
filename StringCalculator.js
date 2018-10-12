@@ -4,27 +4,20 @@ function add (numbers) {
     }    
     var del = [",", "\n"];
     if(numbers.includes("//")){
-	del.push(catchRegex(numbers));
+	del.push(catchDel(numbers));
 	numbers = numbers.substring(4, numbers.length);
     }
-
-    if(numbers.includes(del[0]) || numbers.includes(del[1]) || numbers.includes(del[2])) {
-	var string = "";
-	for(var i = 0; i < del.length; i++) {
-	    string += del[i] + "|";
-	}
-	string = string.substring(0, string.length-1);
+    if(numbers.length > 1) {
+	var string = catchRegex(del);
 	var reg = new RegExp(string);
- 	console.log(numbers);
         var array = numbers.split(reg);
-	console.log(array);
 	return sum(array);
-    }else {
+    }else {	
 	if(parseInt(numbers) < 0) {
 	    catchNegatives(numbers);
 	}
-	return parseInt(numbers) > 1000 ? 0 : parseInt(numbers);    
-    }
+	return parseInt(numbers) > 1000 ? 0 : parseInt(numbers);
+    }    
 }
 
 function sum (array) {
@@ -57,10 +50,18 @@ function catchNegatives(array) {
     throw new Error(message);
 }
 
-function catchRegex(numbers) {
+function catchDel(numbers) {
     var counter = 0;
-    var del = numbers[2];
-    return del;
+    var delim = numbers[2];
+    return delim;
 }
 
+function catchRegex(del) {
+    var string = "";
+    for(var i = 0; i < del.length; i++) {
+        string += del[i] + "|";
+    }
+    string = string.substring(0, string.length-1);
+    return string;
+}
 module.exports = add;
